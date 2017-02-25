@@ -1,7 +1,8 @@
-const Promise = require('bluebird');
-const Async = require('async');
+import Promise from 'bluebird';
+import Async from 'async';
+import {EventEmitter} from 'events';
+
 const async = Promise.promisifyAll(Async);
-const EventEmitter = require('events').EventEmitter;
 
 module.exports = class Bootstrapper extends EventEmitter {
 
