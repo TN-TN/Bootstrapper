@@ -1,0 +1,5 @@
+language: nodejs
+install:
+  - yarn
+script:
+  - yarn run build
