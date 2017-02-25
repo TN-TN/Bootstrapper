@@ -2,6 +2,14 @@ language: node_js
 dist: trusty
 cache: yarn
 node_js:
-  - "7.6.0"
+- 7.6.0
 script:
-  - npm run build
+- npm run build
+deploy:
+  provider: npm
+  email: nilsbergmann@noim.io
+  api_key:
+    secure: O/zJDEY6GFR19yTqgCkJgLViOnTNr7tYPwiyBnwkGq0nZOhdWrsAiI27n131bs/wlEDJHiHhXRde59JtMj4h+FzpILOy3xkEA6n99domWyShzPO5uWkJFTZ1bKjET19dT3BXLQ/vvQx+/0Yu27mNZbJ4YM69aAEte7Ks8zPVBqE6kAZnln1Pg+WwWVTyUSpPRXZ09CCuWth2IsJQug//b99DfzheC33/UcPTTrlIqlq6L65LMiWgzvR8HtUkCEEP8azNjpk/tKha5c21Os4IAi2jwE6h+La3X2TD4C6kKNOTO+mZYWvGiiODk2IteYTaMoK8ChABL+A2msaBZvN5G2u9vZRLPMq772aywRnyRndapOhcA5R19f7ZJfPFr8glGO0MkEZ30Iiwjy1eSapwE7gl9JJ/Tp4Z5RbA+vB4dgCmx27hx8+3ezA4gf0w99LpdGk4WutLaOZylZOr8VkYyQUEk+HtKaYBRUoua7UdIlblyIoC9b8FvDhbsv6cv6Y5nq3IuHAZmiUBJgp0DUK4JW04EMxeLMnHO4NdtpGTlCmWFpkaXOCi+bNN3FOC/Q4XZBbnB/Q6CQ299g29eIoleeplMIy8M13BYX28Zzm7KMhRSRx+H5VLRIKVP9lEr05N5NhmkJg8XiGHBAJ3lkbAm41nDyMaRmJURBj3G0zkkR4=
+  on:
+    tags: true
+    repo: TN-TN/Bootstrapper
