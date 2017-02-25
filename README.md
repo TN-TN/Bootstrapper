@@ -24,6 +24,7 @@ A bootstrapper library
 | function | <code>function</code> |  |
 | payload | <code>\*</code> | The payload is the first arguement for the function |
 | ignoreError | <code>Boolean</code> | Don't reject if a error occurs, but only for this fragment |
+| pipeTo | <code>function</code> | This function will be executed after the main function finished. The first argument is the result of the function. |
 
 <a name="BootstrapperConfig"></a>
 
