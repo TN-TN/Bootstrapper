@@ -1,5 +1,5 @@
 {
-  "name": "bootstrapper",
+  "name": "function-bootstrapper",
   "version": "1.0.0",
   "description": "A bootstrapper library",
   "main": "dist/bundle.js",
