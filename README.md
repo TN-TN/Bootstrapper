@@ -1,5 +1,5 @@
 # Bootstrapper
-[![Coverage Status](https://coveralls.io/repos/github/TN-TN/Bootstrapper/badge.svg?branch=master)](https://coveralls.io/github/TN-TN/Bootstrapper?branch=master)
+[![Build Status](https://travis-ci.org/TN-TN/Bootstrapper.svg?branch=master)](https://travis-ci.org/TN-TN/Bootstrapper)
 A bootstrapper library
 
 
