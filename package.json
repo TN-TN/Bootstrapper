@@ -1,0 +1,13 @@
+{
+  "name": "bootstrapper",
+  "version": "1.0.0",
+  "description": "A bootstrapper library",
+  "main": "index.js",
+  "repository": {},
+  "author": "Nils Bergmann <nilsbergmann@noim.io>",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.1.5",
+    "bluebird": "^3.4.7"
+  }
+}
