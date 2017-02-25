@@ -12,6 +12,7 @@ module.exports = class Bootstrapper extends EventEmitter {
      * @property {Function} function
      * @property {*} payload The payload is the first arguement for the function
      * @property {Boolean} ignoreError Don't reject if a error occurs, but only for this fragment
+     * @property {Function} pipeTo This function will be executed after the main function finished. The first argument is the result of the function.
      */
 
     /**
@@ -45,7 +46,10 @@ module.exports = class Bootstrapper extends EventEmitter {
             let c = 0;
             return async.eachSeriesAsync(this.boot_chain, (FuncCFG, Callback) => {
                 if (FuncCFG.promise){
-                    FuncCFG.function(FuncCFG.payload || undefined).then(() => {
+                    FuncCFG.function(FuncCFG.payload || undefined).then((response) => {
+                        if (FuncCFG.pipeTo && typeof FuncCFG.pipeTo == "function"){
+                            FuncCFG.pipeTo(response);
+                        }
                         c++;
                         self.emit('progress', {finished: c, count: self.count});
                         Callback();
@@ -60,7 +64,10 @@ module.exports = class Bootstrapper extends EventEmitter {
                     });
                 } else {
                     try {
-                        FuncCFG.function(FuncCFG.payload || undefined);
+                        const response = FuncCFG.function(FuncCFG.payload || undefined);
+                        if (FuncCFG.pipeTo && typeof FuncCFG.pipeTo == "function"){
+                            FuncCFG.pipeTo(response);
+                        }
                         c++;
                         self.emit('progress', {finished: c, count: self.count});
                         Callback();
