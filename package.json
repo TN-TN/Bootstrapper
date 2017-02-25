@@ -2,12 +2,20 @@
   "name": "bootstrapper",
   "version": "1.0.0",
   "description": "A bootstrapper library",
-  "main": "index.js",
+  "main": "dist/bundle.js",
   "repository": {},
   "author": "Nils Bergmann <nilsbergmann@noim.io>",
   "license": "MIT",
+  "scripts": {
+    "build": "babel index.js --out-file dist/bundle.js --source-maps inline --presets=es2015"
+  },
   "dependencies": {
     "async": "^2.1.5",
     "bluebird": "^3.4.7"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "babel-preset-es2015": "^6.22.0"
   }
 }

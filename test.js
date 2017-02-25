@@ -3,7 +3,7 @@
  */
 
 
-const Bootstrapper = require('./index');
+const Bootstrapper = require('./dist/bundle');
 
 const boot = new Bootstrapper({
     chain: [
