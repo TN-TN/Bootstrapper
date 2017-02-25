@@ -1,4 +1,8 @@
-language: nodejs
+language: node_js
+dist: trusty
+cache: yarn
+node_js:
+  - "7.6.0"
 install:
   - yarn
 script:
