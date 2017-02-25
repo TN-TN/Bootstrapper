@@ -6,6 +6,25 @@ const async = Promise.promisifyAll(Async);
 
 module.exports = class Bootstrapper extends EventEmitter {
 
+    /**
+     * @typedef {Object} BootChainFragment
+     * @property {Boolean} promise If false, it needs to be sync
+     * @property {Function} function
+     * @property {*} payload The payload is the first arguement for the function
+     * @property {Boolean} ignoreError Don't reject if a error occurs, but only for this fragment
+     */
+
+    /**
+     * @typedef {Object} BootstrapperConfig
+     * @property {Boolean} ignoreError Don't reject if a error occurs
+     * @property {BootChainFragment} chain []
+     */
+
+    /**
+     *
+     * @param {BootstrapperConfig} bootstrapCFG
+     * @property {Promise} promise
+     */
     constructor(bootstrapCFG) {
         super();
         this.boot_chain = bootstrapCFG.chain;
@@ -15,6 +34,10 @@ module.exports = class Bootstrapper extends EventEmitter {
         this.promise = this._execute();
     }
 
+    /**
+     * @return {Promise}
+     * @private
+     */
     _execute(){
         const self = this;
         return new Promise((resolve, reject) => {
