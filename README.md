@@ -35,5 +35,7 @@ A bootstrapper library
 | Name | Type | Description |
 | --- | --- | --- |
 | ignoreError | <code>Boolean</code> | Don't reject if a error occurs |
+| parallel | <code>Boolean</code> | Run Bootchain parallel, how much operation parallel is defined with limit. You only need to define one property, parallel or limit. If not limit is set and parallel is true, cpu core count will be used. |
+| limit | <code>int</code> | How much operation parallel. You only need to define one property, parallel or limit. If not limit is set and parallel is true, cpu core count will be used. |
 | chain | <code>[BootChainFragment](#BootChainFragment)</code> | [] |
 
