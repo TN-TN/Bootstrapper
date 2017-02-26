@@ -1,5 +1,5 @@
 # Bootstrapper
-[![Build Status](https://travis-ci.org/TN-TN/Bootstrapper.svg?branch=master&style=flat-square)](https://travis-ci.org/TN-TN/Bootstrapper)
+[![Travis](https://img.shields.io/travis/TN-TN/Bootstrapper.svg?style=flat-square)](https://travis-ci.org/TN-TN/Bootstrapper)
 [![npm](https://img.shields.io/npm/v/function-bootstrapper.svg?style=flat-square)](https://www.npmjs.com/package/function-bootstrapper)  
 A bootstrapper library
 
