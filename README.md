@@ -3,6 +3,86 @@
 [![npm](https://img.shields.io/npm/v/function-bootstrapper.svg?style=flat-square)](https://www.npmjs.com/package/function-bootstrapper)  
 A bootstrapper library
 
+Example ES6:
+```javascript
+import Bootstrapper from 'function-bootstrapper';
+import Promise from 'bluebird';
+
+const bootstrap = new Bootstrapper({
+    ignoreError: true,
+    chain: [
+        {
+            promise: true,
+            payload: {
+                "importantData": "Hello"  
+            },
+            function: function(payload) {
+                return new Promise((resolve, reject) => {
+                    doSomething(payload, (error) => {
+                        if (error){
+                            reject(error);
+                        } else {
+                            resolve();
+                        }
+                    });
+                });
+            }
+        },
+        {
+            payload: '{"json":true}',
+            function: function(payload){
+                return JSON.parse(payload);
+            }
+        }
+    ]
+});
+
+bootstrap.on('progress',console.log);
+bootstrap.promise.then(() => {
+    console.log("Finished bootstrap");
+}).catch(console.error);
+```
+
+Example normal:  
+```javascript
+const Bootstrapper = require('function-bootstrapper');
+const Promise = require('bluebird');
+
+const bootstrap = new Bootstrapper({
+    ignoreError: true,
+    chain: [
+        {
+            promise: true,
+            payload: {
+                "importantData": "Hello"  
+            },
+            function: function(payload) {
+                return new Promise(function (resolve, reject) {
+                    doSomething(payload, (error) => {
+                        if (error){
+                            reject(error);
+                        } else {
+                            resolve();
+                        }
+                    });
+                });
+            }
+        },
+        {
+            payload: '{"json":true}',
+            function: function(payload){
+                return JSON.parse(payload);
+            }
+        }
+    ]
+});
+
+bootstrap.on('progress',console.log);
+bootstrap.promise.then(function () {
+    console.log("Finished bootstrap");
+}).catch(console.error);
+```
+
 
 ## Typedefs
 
