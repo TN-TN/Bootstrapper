@@ -18,6 +18,8 @@ module.exports = class Bootstrapper extends EventEmitter {
     /**
      * @typedef {Object} BootstrapperConfig
      * @property {Boolean} ignoreError Don't reject if a error occurs
+     * @property {Boolean} parallel Run Bootchain parallel, how much operation parallel is defined with limit. You only need to define one property, parallel or limit. If not limit is set and parallel is true, cpu core count will be used.
+     * @property {int} limit How much operation parallel. You only need to define one property, parallel or limit. If not limit is set and parallel is true, cpu core count will be used.
      * @property {BootChainFragment} chain []
      */
 
@@ -31,6 +33,11 @@ module.exports = class Bootstrapper extends EventEmitter {
         this.boot_chain = bootstrapCFG.chain;
         this.cfg = bootstrapCFG;
         this.count = this.boot_chain.length;
+        if (this.cfg.parallel || this.cfg.limit){
+            this.limit = this.cfg.limit || require('os').cpus().length;
+        } else {
+            this.limit = 1;
+        }
         this._execute = this._execute.bind(this);
         this.promise = this._execute();
     }
@@ -44,7 +51,7 @@ module.exports = class Bootstrapper extends EventEmitter {
         return new Promise((resolve, reject) => {
             self.emit('start');
             let c = 0;
-            return async.eachSeriesAsync(this.boot_chain, (FuncCFG, Callback) => {
+            return async.eachLimitAsync(self.boot_chain, self.limit,(FuncCFG, Callback) => {
                 if (FuncCFG.promise){
                     FuncCFG.function(FuncCFG.payload || undefined).then((response) => {
                         if (FuncCFG.pipeTo && typeof FuncCFG.pipeTo == "function"){

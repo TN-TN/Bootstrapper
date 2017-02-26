@@ -7,7 +7,8 @@
   "author": "Nils Bergmann <nilsbergmann@noim.io>",
   "license": "MIT",
   "scripts": {
-    "build": "babel index.js --out-file dist/bundle.js --source-maps inline --presets=es2015"
+    "build": "babel index.js --out-file dist/bundle.js --source-maps inline --presets=es2015",
+    "tag": "git push --follow-tags origin master"
   },
   "dependencies": {
     "async": "^2.1.5",

@@ -6,6 +6,7 @@
 const Bootstrapper = require('./dist/bundle');
 
 const boot = new Bootstrapper({
+    ignoreError: true,
     chain: [
         {
             promise: true,
@@ -20,6 +21,7 @@ const boot = new Bootstrapper({
         {
             function: function () {
                 for (let i = 0; i<1000000000;i++);
+                throw "Some error";
                 return 0;
             }
         }
@@ -32,4 +34,4 @@ boot.on('finished', () => console.log('finished'));
 
 boot.promise.then(() => {
     console.log("finished");
-});
+}).catch(console.error);
