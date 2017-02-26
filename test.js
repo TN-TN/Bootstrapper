@@ -7,6 +7,7 @@ const Bootstrapper = require('./dist/bundle');
 
 const boot = new Bootstrapper({
     ignoreError: true,
+    parallel: true,
     chain: [
         {
             promise: true,
